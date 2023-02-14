@@ -1,11 +1,37 @@
+"""
+Este programa simula un grafo no  dirigido con sus aristan tomando en cuenta los conceptos basicos de este
+para poder simularlo de una manera sencilla y entendible
+Autores:
+José SanMartín
+Versión:
+VER 1.1
+"""
 import os 
 #Clase para definir un vertice 
 class vertice:
+    """
+    Es una clase la cual nos ayudara a generar los vertices del grafo
+    Recibe
+    ------------
+       No tiene parametro de entrada
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
     #Se crea un constructor
     def __init__(self,i):
         """
-        
-        """
+    Es una funcion la cual inicializara la clase que estamos creando y todos los atributos y componente
+    dentro de ella
+    Recibe
+    ------------
+       i: representar la id es decir el nombre que vamos a darle a una variable 
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
         #Iniciamos la variable Id
         self.id=i
         #Inicializamos la variable visitado
@@ -16,24 +42,79 @@ class vertice:
         self.vecino=[]
 
     def agregarVecino(self,v):
+        """
+    Es una funcion la cual creara los "vecinos" es decir las aristas que son mas cercanas 
+    una de las otra 
+    Recibe
+    ------------
+       v: representar la id del vertice vecino, es decir da el nombre del vertice mas cercano
+       al cual se conecta otro
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
         #En caso de que no exista el vertice creado
         if not v in self.vecino:
             #Agregar al apendice 
             self.vecino.append(v)
 
 class grafica:
+    """
+    Es una clase la cual nos ayudara a generar la "grafica" general del grafo
+    Recibe
+    ------------
+       No tiene parametro de entrada
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
     #Se crea el metodo construcutor
     def __init__(self):
+        """
+    Es una funcion la cual inicializara la clase que estamos creando y todos los atributos y componente
+    dentro de ella
+    Recibe
+    ------------
+       No tiene parametro de entrada
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
         #Creamos un diccionario para guardar los vertices 
         self.vertices={}
 
     def agregarVertice(self,v):
+        """
+    Es una funcion la cual nos permitira agregar los vertices del grafo siempre y cuando 
+    este no este ya agregado en una lista de vertices
+     Recibe
+    ------------
+       v: Es el vertice de creado por el usuario 
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
         #En caso de que no exista el vertice creado
         if v not in self.vertices:
             #Agregar al apendice 
             self.vertices[v]= vertice(v)
     
     def agregararista(self,a,b):
+        """
+    Es una funcion que nos ayuda a agregar las aristas en este caso que seran bidireccional 
+    pues no tienen un orde establecido
+    ------------
+      a: Refiere un punto en el cual inicia la arista y se dirigira hacia b
+      b: Refiere un punto en el cual  termina la arista y regresa hacia a
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
         #Conectara las vertices vecinas por una arista si se encuentran alamecenados
          #si se encuentra en el vertice entonces accederemos a los vertices
         if  a in self.vertices and b in self.vertices:
@@ -43,6 +124,16 @@ class grafica:
             self.vertices[b].agregarVecino(a)
 
 def main():
+    """
+    Es la funcion que recopila todas la demas funciones para ejecutarlos
+    Recibe
+    ------------
+       No tiene parametro de entrada
+           
+    Retorna:
+    ------------
+       No tiene parametro de retorno
+    """
     #incializamos la funcion grafica 
     g=grafica()
     #Creamos los nodos del grafo
